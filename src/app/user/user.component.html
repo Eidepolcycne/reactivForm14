@@ -1,26 +1,42 @@
-<div [formGroup]="userForm" (ngSubmit)="inscription()">
-  <label>
-    Nom: <input type="text" formControlName="username">
-  </label>
+<div>
+  <div>
     <label>
-    Email: <input type="text" formControlName="email">
-  </label>
-  <label>
-    Mot de passe: <input type="text" formControlName="password">
-  </label>
-  <div formGroupName="address">
-    <label>Adresse :
-      Rue: <input type="text" formControlName="street">
-      Ville: <input type="text" formControlName="city">
-      Code postal: <input type="number" formControlName="zipCode">
+      Nom:
+      <input type="text" [formControl]="username" />
+    </label>
+    <label>
+      Email:
+      <input type="text" [formControl]="email" />
+    </label>
+    <label>
+      Mot de passe:
+      <input type="text" [formControl]="password" />
     </label>
   </div>
-  <button type="submit" (click)="inscription()">Inscription</button>
+  Adresse:
+  <label>
+    Rue:
+    <input type="text" [formControl]="street" />
+  </label>
+  <label>
+    Code postal:
+    <input type="number" [formControl]="zipCode" />
+  </label>
+  <label>
+    Ville:
+    <input type="text" [formControl]="city" />
+  </label>
+  <div>
+    <button (click)="inscription()">Inscription</button>
+  </div>
 </div>
+
 <div *ngIf="submitted">
   <h2>Nouvel utilisateur enregistré :</h2>
-  <p>Nom: {{newUser.username}}</p>
-  <p>Email: {{newUser.email}}</p>
-  <p>Mot de passe: {{newUser.password}}</p>
-  <p>Adresse: {{newUser.address.street}} {{newUser.address.zipCode}} {{newUser.address.city}}</p>
+  <p>Nom :{{ newUser.username }}</p>
+  <p>Email{{ newUser.email }}</p>
+  <p>Mot de Passe:{{ newUser.password }}</p>
+  <p>Adresse: {{ newUser.adress.street }} {{ newUser.adress.zipCode }}
+    {{ newUser.adress.city}}
+  </p>
 </div>

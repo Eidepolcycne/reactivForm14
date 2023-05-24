@@ -1,37 +1,32 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-user',
+  selector: 'app-root',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.css'],
 })
 export class UserComponent {
-  newUser : any = {};
-  submitted : boolean = false;
-  userForm = new FormGroup({
-    username: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
-    address: new FormGroup({
-      street : new FormControl(''),
-      city : new FormControl(''),
-      zipCode : new FormControl('')
-    })
-  });
+  username = new FormControl('');
+  email = new FormControl('');
+  password = new FormControl('');
+  street = new FormControl('');
+  zipCode = new FormControl('');
+  city = new FormControl('');
+  submitted: boolean = false;
+  newUser: any = {};
 
-  inscription (){
-    this.newUser = {
-      username: this.userForm.value.username,
-      email: this.userForm.value.email,
-      password: this.userForm.value.password,
-      address: {
-        street: this.userForm.value.address?.street,
-        city: this.userForm.value.address?.city,
-        zipCode: this.userForm.value.address?.zipCode
-      }
-    };
+  inscription() {
     this.submitted = true;
-    this.userForm.reset();
+    this.newUser = {
+      username: this.username.value,
+      email: this.email.value,
+      password: this.password.value,
+      adress: {
+        street: this.street.value,
+        zipCode: this.zipCode.value,
+        city: this.city.value,
+      },
+    };
   }
 }
